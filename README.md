@@ -7,7 +7,7 @@ To contextualize this discussion, here's a screenshot of the app:
 ![](src/images/Screenshot%202024-05-13%20at%2017.07.22.png)
 
 ## Goal 
-Enhance the solar generation forecast chart by letting a user zoom in on the data they were viewing. 
+Enhance the solar generation forecast chart by letting a user zoom in on the data they are viewing. 
 
 **Timeframe**
 
@@ -17,59 +17,45 @@ The **Zoom Feature** went through several iterations from December 2023 - March 
 
 Our app had to do the following:
 
-* **Consume a public API** - we fetched our data from NASA's APOD API: https://api.nasa.gov/planetary/apod.
-* **The app had to include a router** - our routes are housed in our App.js file.
-* **Include a wireframe** - **[here it is](https://s3.amazonaws.com/shecodesio-production/uploads/files/000/027/401/original/wireframe-for_project-2.png?1645095611)**. 
-* Demonstrate **semantically clean HTML** - we reread our code to make sure it reads clearly.
-* **Be deployed online** - you can have a look here! => **[Local Space Station](https://mystifying-goldberg-c06879.netlify.app/)**.
-* **Extra's we added** - we imported the React-Calendar Library. 
+* **Allow a user to visually select data** 
+* **Zoom in on selected data** - They would be able to zoom in on one chart and set the zoom level for four charts in the app.
+* **Allow user to zoom out**
 
 ## **Technologies** Used
 
-- **[React](https://reactjs.org/)** - allowed us to develop a single page application
-- **[ReactRouter](https://reactrouter.com/)**
-- **[React-Calendar](https://github.com/wojtekmaj/react-calendar)** - provided a library of functions and settings that facilitated calendar design
-- **[Bulma](https://bulma.io/)** - we imported this CSS library to help with styling. It was the CSS library we'd worked with a bit in class, and was fun to explore. 
-- **[Excalidraw](https://excalidraw.com/)** - used for wireframing
+- **[React](https://reactjs.org/)** 
+- **[Recharts Library](https://recharts.org/en-US)**
+- **[Tailwind](https://tailwindcss.com/)** - This is the CSS library for the app.
 - Git/GitHub
-- VSCode Live Share - this was helpful for pair coding
-- Insomnia
-- JavaScript (ES6)
-- HTML 5 
+- VSCode
+- TypeScript 
 
+### This is what the feature looks like in production: 
 
-
-# The LSS (Local Space Station)
-
-Our group wanted to focus on space as a theme, so we decided to build a calendar using  **[React-Calendar Library](https://blog.logrocket.com/react-calendar-tutorial-build-customize-calendar/)** that consumes **[NASA's APOD (Astronomy Picture of the Day) API](https://api.nasa.gov/)**. Our calendar shows a thumbnail image of the NASA image for a given date on the calendar. Each date on the calendar links to the day's full image and explanation of the image. This explanation is also pulled from the API. 
-
-![](./src/images/project-2-gif-2.gif)
-
-
-### Check out the deployed version here: 
-
-**[Local Space Station](https://mystifying-goldberg-c06879.netlify.app/)**
+![](src/images/May-13-2024%2018-06-12.gif)
 
 
 ## Planning 
-* We defined the basic project, chose the API we would use, and then took that concept and wireframed the idea. In the wireframe, we built out what functionality we'd implement, and what components we needed to render in the browser. This stage really helped us to define our MVP and the basic files we would work on. 
-
-![](./src/images/wireframe_2.jpg)
-
-* Our general approach then was to split up the work based on what we had designed in our wireframe. I focused on setting up our Router and using the API we had chosen to build the page with the NASA Astronomy Picture of the Day and the description of the image. We called this our DatePage component. 
-
-* Julie Park and Laura Smith took more of the lead on researching and selecting the React Calendar library we’d use, and later in the project I read through Calendar documentation to help Laura and Julie better understand how the library worked. I also set up the router for our project. We decided as a group that once the calendar was implemented and the DatePage component was built then we’d work on the Home page. 
-
-* I worked collaboratively with Julie Park on the function that allowed us to click on a date in the calendar and go to the DatePage. 
-
-* We did not use Trello or any sort of planning app, which will, as you might imagine, be discussed in the Challenges section. 
+*The **Recharts Library** doesn't have a built-in Zoom Feature, so I researched other chart libraries, such as **Plotly**, which has a JavaScript version. 
+*I brought my research to the team, and we decided to use the tools in the Recharts Library to construct the feature, but it would use more in-depth knowledge of the library. 
 
 ## Development
-Two of our main components were the CalendarPage.js, which shows our calendar that goes as far back as the NASA Astronomy Picture of the Day (APOD) API, and the DatePage.js, which displays the APOD and a description of that image. Here I’ll talk about my role in coding these components. 
+Once the team decided to go with Recharts, I researched how others had figured out how to 
 
-### CalendarPage
+<details>
+<summary>Reference Area</summary>
 
-* As a React Library, React Calendar comes with a set of out-of-the-box functions (ex. onChange() or onClick()) and settings (ex. minDetail or showNeighboringMonth). On our Calendar Page, we had the opportunity to explore and play with this functionality. 
+</details>
+
+### Reference Area
+
+### Mouse Events
+
+### Resetting the chart to its default
+
+
+
+* As a React Library, Recharts comes with a set of out-of-the-box functions, so helping a user zoom in on the chart was a matter of . 
 
 * To better illustrate this point, below I've included the Calendar section of our CalendarPage React component:
 
