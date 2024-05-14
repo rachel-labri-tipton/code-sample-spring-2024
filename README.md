@@ -45,7 +45,7 @@ The Zoom Feature was to do the following:
 
 * To better illustrate this point, I've included the essential code below. 
 
-## Relevant Variables 
+### Relevant Variables 
 
 <details>
 <summary>Relevant Variables</summary>
@@ -64,7 +64,7 @@ The Zoom Feature was to do the following:
 </details>
 
 
-## Reference Area
+### Reference Area
 
 <details>
 <summary>Reference Area</summary>
@@ -84,7 +84,7 @@ The Zoom Feature was to do the following:
 ```
 </details>
 
-## Mouse Events with Recharts
+### Mouse Events with Recharts
 <details>
 <summary>onMouseDown</summary>
 
