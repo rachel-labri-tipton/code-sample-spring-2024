@@ -1,4 +1,4 @@
-# Zoom Feature for Quartz Solar app using Recharts (a React library)
+# Chart Zoom Feature for Quartz Solar app using Recharts (a React library)
 
 A piece of code that I worked on in my time at **Open Climate Fix** was making the charts in our **Quartz Solar** app more dynamic and interactive. The app provides data visualization for solar generation forecasts in the UK on a national and regional level, and the early versions of the app did not allow users to zoom in on the charts to have a more granular view of data displayed. 
 
