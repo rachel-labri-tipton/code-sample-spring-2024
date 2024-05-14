@@ -54,48 +54,41 @@ Once the team decided to go with Recharts, I researched how others had figured o
 ### Resetting the chart to its default
 
 
+* As a React Library, Recharts comes with a set of out-of-the-box functions, of which `Zoom` is not one, so createing this feature was a matter of research and patching functions together. 
 
-* As a React Library, Recharts comes with a set of out-of-the-box functions, so helping a user zoom in on the chart was a matter of . 
+* To better illustrate this point, I've included some code below. 
 
-* To better illustrate this point, below I've included the Calendar section of our CalendarPage React component:
 
-```
-<Calendar  // This is the calendar library. The lines below determine how our customized library works
 
-// FUNCTIONS These pass the above defined functions from the CalendarPage.js component into the Calendar library functionality
-onChange={onChange}
-onClickDay={onClickDay}
-value={value}
-onActiveStartDateChange={onActiveStartDateChange}
 
-// SETTINGS Below are simply parameters affecting how the calendar 
-is displayed minDetail="month" // this means users can only see a month view (change to year to have year and month options)
-
-maxDate={new Date()} // this stops users selecting future dates
-tileContent={decideImage}
-selectRange={true} // this allows users to select a range of dates - 
-we will use this to show the pictures from all of these dates defaultView="month"
-showNeighboringMonth={false} // this ensures we only show dates from the current month
-className={['react-calendar']}
-tileClassName="tile"
+<details>
+<summary>Reference Area</summary>
 
 ```
 
-The piece of our CalendarPage component that I worked on was onClickDay(). This is the function called when a specific day of the calendar is clicked. This function allows a user to move from the calendar to the DatePage component that renders the NASA APOD along with an image description. And this required us to transform the target value date that the calendar immediately gives into a string that could be passed as a parameter using the React useParams method into our API call and as an ":id" in the http request, which required researching and finding the toISOString() method. For example, the e.target.value date automatically provided by React Calendar is, for example, "Wed Apr 07 2021 00:00:00 GMT+0000" and we needed something like 2021-04-07 (YYYY-MM-DD). I have to credit my teammate Julie Park with figuring this one out and finding the toISOString() method on StackOverflow. 
-
-*Here's the commented code for onClickDay()*: 
 ```
-  function onClickDay(value) {
-    // points to the DatePage component
-    const calendarDate = new Date(
-      value.getTime() -
-      value.getTimezoneOffset() * 60000
-    ).toISOString().split('T')[0] // adjust the clicked date to offset issues with British Summer Time and format it into YYYY-MM-DD
-    const dateToString = calendarDate.toString() // convert the date into string
-    // takes a user to a corresponding date page
-    navigate(`/datepage/${dateToString}`)
-  }
-  ```
+</details>
+
+<details>
+<summary>onMouseDown</summary>
+
+```
+onMouseDown={(e?: { activeLabel?: string }) => {
+            if (!zoomEnabled) return;
+            setTemporaryZoomArea(globalZoomArea);
+            setGlobalIsZooming(true);
+            let xValue = e?.activeLabel;
+            if (typeof xValue === "string" && xValue.length > 0) {
+              setGlobalZoomArea({ x1: xValue, x2: xValue });
+            }
+          }}
+```
+</details>
+
+
+
+
+
 
 ### DatePage
 * With the correctly formatted string, we are able to use it in the path for the Route that renders our DatePage component. 
@@ -106,23 +99,6 @@ The piece of our CalendarPage component that I worked on was onClickDay(). This 
  ```
 
 The correctly formatted date is then passed through the DatePage component as a parameter using the React useParams() method that is then passed through the API request as seen below:  
-
-```
-function DatePage() {
-  const { date } = useParams();
-  const [apod, setApod] = React.useState(undefined);
-//apod = Astronomy Picture of the Day (abbreviation used by the NASA APOD API)
-  React.useEffect(() => {
-    async function fetchApod() {
-      const resp = await fetch(`https://api.nasa.gov/planetary/apod?date=${date}&api_key=ZNZOJj0Nq1kjV9IBBHp5qNWaAfThwOh4Kn98vhuY`);
-      const data = await resp.json();
-      setApod(data);
-      console.log(resp)
-    }
-    fetchApod();
-  }, [date]);
-
-  ```
 
 In addition to working on the two above functions, I also took the lead on styling and deployment for our project. This was my first time working with a styling library, so I watched a Traversy Media tutorial on the basics and read through the documentation.  The styling of the DatePage component is the result of me working with Bulma cards and columns. 
 
