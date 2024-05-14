@@ -9,13 +9,13 @@ To contextualize this discussion, here's a screenshot of the app:
 ![](src/images/Screenshot%202024-05-13%20at%2017.07.22.png)
 
 ## Goal 
-Enhance the solar generation forecast chart by letting a user get a closer look at the data being visualized. We wanted them to be able to zoom in and zoom out of the chart data.  
+Enhance the solar generation forecast chart by letting a user get a closer look at the data being visualized. My responsibility was to make it possible for a user to zoom in and zoom out of the chart data.  
 
 The **Zoom Feature** went through several iterations from December 2023 - March 2024. It was occasionally put on hold for other work but is now in production. 
 
 ## Feature Brief 
 
-Our app had to do the following:
+The Zoom Feature was to do the following:
 
 * **Allow a user to visually select data** 
 * **Zoom in on selected data** - They would be able to zoom in on one chart and set the zoom level for four charts in the app.
