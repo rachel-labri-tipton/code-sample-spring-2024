@@ -1,15 +1,15 @@
 # Zoom Feature for Quartz Solar app with Recharts Library (React)
 
-A feature that I worked on at **Open Climate Fix** was on the **Quartz Solar**. The app provides data visualization for solar generation forecasts in the UK. The code I'll be talking about can be found here: [Quartz Solar Code for Chart](https://github.com/openclimatefix/quartz-frontend/blob/main/apps/nowcasting-app/components/charts/remix-line.tsx)
+A piece of code that I worked on in my time at **Open Climate Fix** was getting a chart to zoom in and out in the **Quartz Solar** app. The app provides data visualization for solar generation forecasts in the UK on a national and regional level. 
+
+The code I'll be talking about can be found here: [Quartz Solar Code for Chart](https://github.com/openclimatefix/quartz-frontend/blob/main/apps/nowcasting-app/components/charts/remix-line.tsx). 
 
 To contextualize this discussion, here's a screenshot of the app: 
 
 ![](src/images/Screenshot%202024-05-13%20at%2017.07.22.png)
 
 ## Goal 
-Enhance the solar generation forecast chart by letting a user zoom in on the data they are viewing. 
-
-**Timeframe**
+Enhance the solar generation forecast chart by letting a user get a closer look at the data being visualized. We wanted them to be able to zoom in and zoom out of the chart data.  
 
 The **Zoom Feature** went through several iterations from December 2023 - March 2024. It was occasionally put on hold for other work but is now in production. 
 
@@ -26,6 +26,7 @@ Our app had to do the following:
 - **[React](https://reactjs.org/)** 
 - **[Recharts Library](https://recharts.org/en-US)**
 - **[Tailwind](https://tailwindcss.com/)** - This is the CSS library for the app.
+- **[react-hooks-global-state](https://www.npmjs.com/package/react-hooks-global-state)** - This is a library to provide a global state with React Hooks.
 - Git/GitHub
 - VSCode
 - TypeScript 
@@ -34,18 +35,15 @@ Our app had to do the following:
 ![](src/images/May-13-2024%2018-06-12.gif)
 
 
-
 ## Research 
-*The **Recharts Library** doesn't have a built-in Zoom Feature, so I researched other chart libraries, such as **Plotly**. 
-*I brought my research to the team, and we decided to use the tools in the Recharts Library to construct the feature, but it would take more in-depth knowledge of the library. 
+* The **Recharts Library** doesn't have a built-in Zoom Feature, so I researched other chart libraries, such as **Plotly**. 
+* I brought my research to the team, and we decided to use the tools in the Recharts Library to construct the feature, but it would take more in-depth knowledge of the library. 
 
 ## Development
 
-* As a React Library, Recharts comes with a set of out-of-the-box functions, of which `Zoom` is not one, so createing this feature was a matter of research and patching functions together. 
+* Once the team decided to stay with Recharts, I researched how others had gotten the chart to seem like it zoomed in and out of the data. Our app formatted data for the chart and prepped data for the charts displayed. I would need to filter the prepared data for the chart by using features of the chart and displaying that updated data in the chart.  
 
-* Once the team decided to stay with Recharts, I researched how others had gotten the chart to seem like it zoomed in and out of the data. Our app formatted data for the chart and prepped data for the charts displayed. The main feature would be filtering the prepared data, and displaying that data on the chart.  
-
-* To better illustrate this point, I've included some code below. 
+* To better illustrate this point, I've included the essential code below. 
 
 ## Relevant Variables 
 
@@ -186,19 +184,18 @@ function handleZoomOut() {
 
 ## Wins
 
+* The feature is now in production! 
+
 ## Challenges
 
 ### Technical Challenges
 
-* 
+* The data would need to be able to be selected moving left to right and right to left.
 
-* 
-
-*  
-
-
+* When clicking on the chart and not moving the mouse, all the data occasionally disappeared; I solved this by setting a temporaryZoomArea that was set when you clicked on the chart that had been zoomed into once. 
     
 ## Key learnings 
+* I feel much more comfortable with this particular React library. 
 
 ## If I'd had more time...
 
