@@ -31,10 +31,8 @@ Our app had to do the following:
 - TypeScript 
 
 ### This is what the feature looks like in production: 
-<details>
-<summary>Check it out!</summary>
 ![](src/images/May-13-2024%2018-06-12.gif)
-</details>
+
 
 
 ## Research 
